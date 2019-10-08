@@ -25,6 +25,25 @@ app.listen(port, () => {
     console.log(`Servidor iniciado en el puerto ${port}`);
 });
 
+var carItems=[
+    {
+        name: 'Hyundai',
+        wheels: '10',
+        color: 'Azul'
+    },
+    {
+        name: 'Hyundai',
+        wheels: '12',
+        color: 'Rojo'
+    }
+]
+
+app.get('/api/carItems', (request, response) => {
+    response.send(carItems);
+});
+
+
+
 
 
 
