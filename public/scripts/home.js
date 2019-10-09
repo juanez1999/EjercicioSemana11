@@ -15,24 +15,30 @@ window.addEventListener('load', function(){
             var vehicle = document.createElement('ul');
             //var vehicleElements= document.createElement('li');
             //vehicleElements.innerHTML = element.name;
-
-
             //vehicle.appendChild(vehicleElements);
             vehicle.innerHTML = '<li>'+element.name+'</li><li>'+element.wheels+'</li><li>'+element.color+'</li>';
             container.appendChild(vehicle);
         });
-        
-        
-        console.log(listItems);
     });
     
     form.addEventListener('submit',function(event){
         event.preventDefault();
-        console.log(text.value);
-        console.log(tires.value);
-        console.log(colorpicker.value);
+
+        var formInfo= new FormData(form);
+        var data= new URLSearchParams(formInfo);
+        
+        var promise = fetch('/api/receiveForm', {
+            method : 'POST', 
+            body : data
+        });
+        
+        promise.then((raw) => {
+            return raw.json();
+        }).then((info) => {
+            form.reset();
+            console.log(info);
+        });
         
     });
-    
     
 });

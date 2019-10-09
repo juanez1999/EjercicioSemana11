@@ -42,6 +42,13 @@ app.get('/api/carItems', (request, response) => {
     response.send(carItems);
 });
 
+app.post('/api/receiveForm',(request,response) => {
+    console.log(request.body);
+    carItems.push(request.body);
+    response.send({
+        message: 'ok'
+    });
+});
 
 
 
