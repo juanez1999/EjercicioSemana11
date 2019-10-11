@@ -50,11 +50,21 @@ window.addEventListener('load', function(){
             
             btnsEdit.forEach(function(elem,index) {
                 elem.addEventListener('click',function () {
-                    var span = elem.parentElement.querySelector('span');
-                    span.setAttribute('contenteditable',true);
-                    span.focus();
+                    var span = elem.parentElement.querySelectorAll('span');
+                    
+                    var inputColor = document.createElement('input');
+                    inputColor.setAttribute('type','color');
+                    elem.parentElement.appendChild(inputColor);
+
+                    span.forEach(function(elemSpan){
+                        elemSpan.setAttribute('contenteditable',true);
+                        elemSpan.focus();
+                    });
+                    
                 });
             });
+
+
 
 
         });
