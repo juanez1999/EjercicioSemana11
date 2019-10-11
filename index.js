@@ -59,6 +59,13 @@ app.delete('/api/carItems',(request,response) =>{
 });
 
 app.put('/api/carItems',(request,response) =>{
+    var elementToEdit = carItems[0];
+    elementToEdit.name= 'Nuevo nombre';
+    elementToEdit.wheels= '100';
+    elementToEdit.color= 'Green';
+    response.send({
+        message: 'edited',
+    });
 
 });
 

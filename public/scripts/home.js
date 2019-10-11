@@ -14,30 +14,29 @@ window.addEventListener('load', function(){
             var container = document.querySelector('.container');
             
             container.innerHTML = "";
-
+            
             listItems.forEach(element => {
                 var vehicle = document.createElement('ul');
-                //var vehicleElements= document.createElement('li');
-                //vehicleElements.innerHTML = element.name;
-                //vehicle.appendChild(vehicleElements);
-                vehicle.innerHTML = '<li>'+element.name+'</li><li>'+element.wheels+'</li><button>X</button>';
+                vehicle.innerHTML = '<li><span>'+element.name+'</span></li><li><span>'+element.wheels+'</span></li><button class="btnDelete">X</button><button class="btnEdit">Editar información</button>';
                 container.appendChild(vehicle);
                 vehicle.style.backgroundColor=element.color;
+                vehicle.style.color='white';
+
             });
-
-            var btns = document.querySelectorAll('ul button');
-
+            
+            var btns = container.querySelectorAll('.btnDelete');
+            
             btns.forEach(function(elem,index) {
                 elem.addEventListener('click',function () {
-        
+                    
                     var data= new URLSearchParams();
                     data.append('indexToDelete',index);
-        
+                    
                     var promise = fetch('/api/carItems', {
                         method: 'DELETE',
                         body: data
                     });
-        
+                    
                     promise.then(function(response) {
                         return response.json();
                     }).then(function(info) {
@@ -46,6 +45,18 @@ window.addEventListener('load', function(){
                     });
                 });
             });
+
+            var btnsEdit = container.querySelectorAll('.btnEdit');
+            
+            btnsEdit.forEach(function(elem,index) {
+                elem.addEventListener('click',function () {
+                    var span = elem.parentElement.querySelector('span');
+                    span.setAttribute('contenteditable',true);
+                    span.focus();
+                });
+            });
+
+
         });
     }
     
@@ -53,7 +64,7 @@ window.addEventListener('load', function(){
     
     form.addEventListener('submit',function(event){
         event.preventDefault();
-
+        
         var formInfo= new FormData(form);
         var data= new URLSearchParams(formInfo);
         
@@ -71,7 +82,6 @@ window.addEventListener('load', function(){
         });
         
     });
-
     
     
 });
