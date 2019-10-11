@@ -42,12 +42,24 @@ app.get('/api/carItems', (request, response) => {
     response.send(carItems);
 });
 
-app.post('/api/receiveForm',(request,response) => {
+app.post('/api/carItems',(request,response) => {
     console.log(request.body);
     carItems.push(request.body);
     response.send({
         message: 'ok'
     });
+});
+
+app.delete('/api/carItems',(request,response) =>{
+    var index = request.body.indexToDelete;
+    carItems.splice(parseInt(index),1);
+    response.send({
+        message: 'deleted',
+    });
+});
+
+app.put('/api/carItems',(request,response) =>{
+
 });
 
 
