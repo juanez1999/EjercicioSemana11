@@ -29,12 +29,12 @@ var carItems=[
     {
         name: 'Hyundai',
         wheels: '10',
-        color: 'Azul'
+        color: 'Blue'
     },
     {
         name: 'Hyundai',
         wheels: '12',
-        color: 'Rojo'
+        color: 'Red'
     }
 ]
 

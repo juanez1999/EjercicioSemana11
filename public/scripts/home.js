@@ -20,8 +20,9 @@ window.addEventListener('load', function(){
                 //var vehicleElements= document.createElement('li');
                 //vehicleElements.innerHTML = element.name;
                 //vehicle.appendChild(vehicleElements);
-                vehicle.innerHTML = '<li>'+element.name+'</li><li>'+element.wheels+'</li><li>'+element.color+'</li><button>X</button>';
+                vehicle.innerHTML = '<li>'+element.name+'</li><li>'+element.wheels+'</li><button>X</button>';
                 container.appendChild(vehicle);
+                vehicle.style.backgroundColor=element.color;
             });
 
             var btns = document.querySelectorAll('ul button');
