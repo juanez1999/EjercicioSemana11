@@ -23,14 +23,16 @@ window.addEventListener('load', function(){
                 vehicle.style.color='white';
 
             });
+            console.log(listItems);
             
             var btns = container.querySelectorAll('.btnDelete');
             
             btns.forEach(function(elem,index) {
                 elem.addEventListener('click',function () {
-                    
+                    listItems[index];
+                    console.log(listItems[index]._id);
                     var data= new URLSearchParams();
-                    data.append('indexToDelete',index);
+                    data.append('indexToDelete',listItems[index]._id);
                     
                     var promise = fetch('/api/carItems', {
                         method: 'DELETE',
